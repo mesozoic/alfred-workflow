@@ -2292,10 +2292,7 @@ class Workflow(object):
 
             from .background import run_in_background
 
-            # update.py is adjacent to this file
-            update_script = os.path.join(os.path.dirname(__file__), 'update.py')
-
-            cmd = ['/usr/bin/python3', update_script, 'check', repo, version]
+            cmd = ['/usr/bin/python3', '-m', 'workflow.update', 'check', repo, version]
 
             if self.prereleases:
                 cmd.append('--prereleases')
@@ -2330,10 +2327,7 @@ class Workflow(object):
 
         from .background import run_in_background
 
-        # update.py is adjacent to this file
-        update_script = os.path.join(os.path.dirname(__file__), 'update.py')
-
-        cmd = ['/usr/bin/python3', update_script, 'install', repo, version]
+        cmd = ['/usr/bin/python3', '-m', 'workflow.update', 'install', repo, version]
 
         if self.prereleases:
             cmd.append('--prereleases')
